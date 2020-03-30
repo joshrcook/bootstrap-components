@@ -35,6 +35,7 @@
     "parcel-plugin-bundle-visualiser": "^1.2.0",
     "prettier": "^1.19.1",
     "regenerator-runtime": "^0.13.5",
+    "storybook-addon-themes": "^5.4.1",
     "webpack": "^4.42.1"
   }
 }
