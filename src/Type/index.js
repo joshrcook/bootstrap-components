@@ -2,17 +2,10 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-const Type = React.forwardRef(({ as: Component = 'span', inverse, className, variant = 'body', ...otherProps }, ref) => {
+const Type = React.forwardRef(({ as: Component = 'span', color, inverse, className, variant, ...otherProps }, ref) => {
     const classes = classNames(
-        'type',
-        { 'h1': variant === 'h1' },
-        { 'h2': variant === 'h2' },
-        { 'h3': variant === 'h3' },
-        { 'h4': variant === 'h4' },
-        { 'display-4': variant === 'display' },
-        { 'lead': variant === 'lead' },
-        { 'title': variant === 'title' },
-        { 'label': variant === 'label' },
+        { [`${variant}`]: !!variant },
+        { [`text-${color}`]: !!color },
         { 'inverse': !!inverse },
         className,
     );
@@ -24,7 +17,8 @@ Type.displayName = 'Type';
 Type.propTypes = {
     as: PropTypes.elementType,
     className: PropTypes.string,
-    variant: PropTypes.oneOf([ 'display', 'h1', 'h2', 'h3', 'h4', 'title', 'lead', 'body', 'label' ]),
+    variant: PropTypes.oneOf([ 'display-1', 'display-2', 'display-3', 'display-4', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'lead' ]),
+    color: PropTypes.oneOf([ 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark', 'muted', 'white' ]),
     inverse: PropTypes.bool,
 };
 
