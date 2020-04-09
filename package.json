@@ -13,6 +13,7 @@
   "scripts": {
     "start": "yarn run storybook",
     "storybook": "yarn start-storybook",
+    "storybook:tui-marketing": "yarn storybook --config-dir ./.storybook/tailwind-ui-marketing-theme",
     "watch": "rm -rf ./dist && yarn parcel watch ./src/index.js ./src/**/index.js ./src/**/index.jsx",
     "build": "rm -rf ./dist && yarn parcel build ./src/index.js ./src/**/index.js ./src/**/index.jsx"
   },
