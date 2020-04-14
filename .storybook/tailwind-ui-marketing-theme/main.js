@@ -1,6 +1,6 @@
 const defaultConfig = require('../main');
 
-export default {
+module.exports = {
     ...defaultConfig,
     stories: [
         '../../src/**/*.tui-marketing.stories.js',
