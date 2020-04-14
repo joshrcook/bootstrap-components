@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from './index';
-import { boolean, select } from "@storybook/addon-knobs";
+import { select } from "@storybook/addon-knobs";
 
 
 export default {
@@ -8,18 +8,18 @@ export default {
 };
 
 export const withOptions = () => {
-    const fluid = boolean('fluid', false);
-    const fluidBreakpoint = fluid && select('fluid breakpoint', {
-        default: null,
+    const fluid = select('fluid', {
+        false: null,
+        true: true,
         sm: 'sm',
         md: 'md',
         lg: 'lg',
-        xl: 'xl'
+        xl: 'xl',
     }, null);
 
     return (
         <div>
-            <Container fluid={fluid ? (fluidBreakpoint || true) : null}>
+            <Container fluid={fluid}>
                 Container content
             </Container>
         </div>

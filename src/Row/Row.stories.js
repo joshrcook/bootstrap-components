@@ -1,6 +1,7 @@
 import React from 'react';
 import Row from './index';
 import Col from '../Col';
+import Container from '../Container';
 import { boolean, select } from "@storybook/addon-knobs";
 
 
@@ -9,6 +10,10 @@ export default {
 };
 
 export const withOptions = () => {
+
+    const colStyles = {
+        border: '1px solid blue',
+    };
     const colOptions = {
         default: null,
         '1': '1',
@@ -25,13 +30,15 @@ export const withOptions = () => {
     const lg = select('lg', colOptions, null);
     const xl = select('xl', colOptions, null);
     return (
-        <Row noGutters={noGutters} xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
-            <Col>Col 1</Col>
-            <Col>Col 2</Col>
-            <Col>Col 3</Col>
-            <Col>Col 4</Col>
-            <Col>Col 5</Col>
-            <Col>Col 6</Col>
-        </Row>
+        <Container>
+            <Row noGutters={noGutters} xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
+                <Col style={colStyles}>Col 1</Col>
+                <Col style={colStyles}>Col 2</Col>
+                <Col style={colStyles}>Col 3</Col>
+                <Col style={colStyles}>Col 4</Col>
+                <Col style={colStyles}>Col 5</Col>
+                <Col style={colStyles}>Col 6</Col>
+            </Row>
+        </Container>
     )
 }
