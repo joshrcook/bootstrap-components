@@ -8,4 +8,4 @@ export { default as Container } from './Container';
 export { default as Icon } from './Icon';
 export { default as Row } from './Row';
 export { default as ThemeProvider } from './ThemeProvider';
-export { default as Type } from './Type';
+export { default as Typography } from './Typography';
