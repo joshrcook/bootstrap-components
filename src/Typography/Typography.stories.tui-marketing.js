@@ -1,37 +1,38 @@
 import React from 'react';
-import Typography from './index';
-import { select, text } from '@storybook/addon-knobs';
-import { default as defaultDefault, withHeadings as defaultWithHeadings, withBodyStyles as defaultWithBodyStyles } from './Typography.stories';
+import { default as storyInfo, withHeadings as WithHeadings, withBodyStyles as WithBodyStyles, withInlineElements as WithInlineElements, withKnobs as WithKnobs } from './Typography.stories';
 
-export default defaultDefault;
+export default storyInfo;
 
-export const withDisplayHeadings = () => {
+export const withHeadings = (props) => {
     return (
-        <>
-            <Typography variant="display-4">Display 4</Typography>
-        </>
+        <WithHeadings 
+            {...props} 
+            variants={[ 'h1', 'h2' ]}  
+        />
     );
 };
 
-export const withHeadings = defaultWithHeadings;
-
-export const withBodyStyles = defaultWithBodyStyles;
-
-export const withCustomText = () => {
-    const variant = select('variant', {
-        default: null,
-        // 'display-1': 'display-1',
-        // 'display-2': 'display-2',
-        // 'display-3': 'display-3',
-        'display-4': 'display-4',
-        h1: 'h1',
-        h2: 'h2',
-        h3: 'h3',
-        h4: 'h4',
-        h5: 'h5',
-        h6: 'h6',
-        lead: 'lead',
-    }, null);
-    const children = text('children', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam.');
-    return <Typography variant={variant}>{children}</Typography>;
+export const withBodyStyles = (props) => {
+    return (
+        <WithBodyStyles 
+            {...props} 
+            variants={[null]} 
+        />
+    );
 };
+
+export const withInlineElements = WithInlineElements;
+
+export const withKnobs = (props) => {
+    return (
+        <WithKnobs 
+            {...props} 
+            variants={{
+                default: null,
+                h1: 'h1',
+                h2: 'h2'
+            }}
+            defaultVariantValue={null}
+        />
+    );
+}

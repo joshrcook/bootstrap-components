@@ -3,20 +3,21 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import BootstrapButton from 'react-bootstrap/Button';
 
-const Button = React.forwardRef(({ size, variant = 'primary', className, ...otherProps}, ref) =>  {
+const Button = React.forwardRef(({ hover, focus, size, variant = 'primary', className, ...otherProps}, ref) =>  {
 
     const classes = classNames(
         { [`btn-${size}`]: !!size },
+        { 'hover': !!hover },
+        { 'focus': !!focus },
         className,
     );
 
     return (
         <BootstrapButton
+            {...otherProps} 
             variant={variant}
             className={classes}
-            ref={ref} 
-            {...otherProps} 
-            outline={undefined}
+            ref={ref}
         />
     );
     
@@ -25,10 +26,12 @@ const Button = React.forwardRef(({ size, variant = 'primary', className, ...othe
 Button.displayName = 'Button';
 
 Button.propTypes = {
-    variant: PropTypes.oneOf(['primary', 'primary-soft', 'primary-inversee', 'secondary', 'secondary-soft', 'secondary-inverse', 'danger', 'danger-soft', 'danger-inverse', 'link' ]),
-    size: PropTypes.oneOf(['xs', 'sm', 'lg', 'xl']),
+    variant: PropTypes.string,
+    size: PropTypes.string,
     block: PropTypes.bool,
     className: PropTypes.string,
+    hover: PropTypes.bool,
+    focus: PropTypes.bool,
 };
 
 export default Button;
