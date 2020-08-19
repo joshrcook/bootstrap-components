@@ -2,22 +2,22 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-const AvatarInitials = React.forwardRef((props, ref) => {
+const AvatarTitle = React.forwardRef((props, ref) => {
 	const { as: Component = "div", className, ...otherProps } = props;
 	return (
 		<Component
-			className={classNames("avatar-initials", className)}
+			className={classNames("avatar-title", className)}
 			{...otherProps}
 			ref={ref}
 		/>
 	);
 });
 
-AvatarInitials.displayName = "AvatarInitials";
+AvatarTitle.displayName = "AvatarTitle";
 
-AvatarInitials.propTypes = {
+AvatarTitle.propTypes = {
 	as: PropTypes.elementType,
 	className: PropTypes.string,
 };
 
-export default AvatarInitials;
+export default AvatarTitle;
