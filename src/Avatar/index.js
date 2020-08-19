@@ -1,42 +1,41 @@
-import React from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import colors from '../../lib/colors';
+import React from "react";
+import classNames from "classnames";
+import PropTypes from "prop-types";
+import AvatarTitle from "../AvatarTitle";
+import AvatarImage from "../AvatarImage";
 
-const Avatar = React.forwardRef(({ as: Component = 'div', className, size, src, name, color, ...otherProps}, ref) => {
-    
-    const initials = (!!name && name !== '') ? name.split(' ').map(name => name.charAt(0).toUpperCase()).join('') : null;
-    const classes = classNames(
-        'avatar',
-        { [`avatar-${size}`]: !!size },
-        { [`avatar-${color}`]: !!color },
-        className,
-    );
+const Avatar = React.forwardRef(
+	(
+		{ as: Component = "div", className, size, variant, ...otherProps },
+		ref
+	) => {
+		const classes = classNames(
+			"avatar",
+			{ [`avatar-${size}`]: !!size },
+			{ [`avatar-${variant}`]: !!variant },
+			className
+		);
 
-    return (
-        <Component className={classes} ref={ref} {...otherProps}>
-            {name ? (
-                <span className="avatar-initials">{initials}</span>
-            ) : src ? (
-                <div className="avatar-image" style={{ backgroundImage: `url(${src})` }} />
-            ) : (
-                <svg className="avatar-placeholder" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-            )}
-        </Component>
-    )
-});
+		return (
+			<Component
+				className={classes}
+				ref={ref}
+				{...otherProps}
+			></Component>
+		);
+	}
+);
 
-Avatar.displayName = 'Avatar';
+Avatar.displayName = "Avatar";
 
 Avatar.propTypes = {
-    as: PropTypes.elementType,
-    size: PropTypes.oneOf([ 'xs', 'sm', 'lg', 'xl' ]),
-    className: PropTypes.string,
-    name: PropTypes.string,
-    src: PropTypes.string,
-    color: PropTypes.oneOf(colors),
+	as: PropTypes.elementType,
+	size: PropTypes.oneOf(["xs", "sm", "lg", "xl"]),
+	variant: PropTypes.string,
+	className: PropTypes.string,
 };
+
+Avatar.Title = AvatarTitle;
+Avatar.Image = AvatarImage;
 
 export default Avatar;
